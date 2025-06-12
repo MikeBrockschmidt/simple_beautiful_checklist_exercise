@@ -53,13 +53,16 @@ class _ListScreenState extends State<ListScreen> {
                         ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(40.0),
+                  padding: const EdgeInsets.all(24.0),
                   child: TextField(
                     controller: _controller,
                     decoration: InputDecoration(
-                      labelText: 'Task Hinzufügen',
+                      hintText: 'Task hinzufügen',
+                      filled: true,
+                      fillColor: Theme.of(context).cardColor,
+                      prefixIcon: const Icon(Icons.task_alt),
                       suffixIcon: IconButton(
-                        icon: const Icon(Icons.add),
+                        icon: const Icon(Icons.add_circle_outline),
                         onPressed: () {
                           if (_controller.text.isNotEmpty) {
                             widget.repository.addItem(_controller.text);
@@ -67,6 +70,14 @@ class _ListScreenState extends State<ListScreen> {
                             _updateList();
                           }
                         },
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(
+                        vertical: 20.0,
+                        horizontal: 20.0,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                        borderSide: BorderSide.none,
                       ),
                     ),
                     onSubmitted: (value) {
